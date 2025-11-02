@@ -58,3 +58,18 @@ class Attendance(models.Model):
 
     def __str__(self):
         return f"{self.student} - {self.date} - {self.get_status_display()}"
+    
+
+
+class Feedback(models.Model):
+    student = models.ForeignKey('Student', on_delete=models.CASCADE)
+    message = models.TextField()
+    rating = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Feedback from {self.student.name} ({self.rating}/5)"
+

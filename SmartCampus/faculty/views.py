@@ -1,5 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .forms import FeedbackForm
 
-def faculty_home(request):
-    return render(request,'faculty/faculty_home.html')
+def feedback_view(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'faculty/thanks.html')
+    else:
+        form = FeedbackForm()
+    return render(request, 'faculty/feedback.html', {'form': form})
