@@ -33,13 +33,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'students', 'faculty',
+    'students', 'faculty', 
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'SmartCampus.urls'
+AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_URL = '/users/login/'
+
+# Where to go after successful login
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {
