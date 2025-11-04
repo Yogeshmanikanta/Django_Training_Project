@@ -1,12 +1,99 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Student Dashboard</title>
-	</head>
-	<body>
-		<h1>Welcome, {{ user.username }}!</h1>
-		<p>You are logged in as a <strong>Student</strong>.</p>
+{% extends "base.html" %} {% block title %}Student Dashboard{% endblock %}
+{%block content %}
+<div class="container py-5">
+	<h2 class="mb-4 text-center fw-bold text-primary">Student Dashboard</h2>
 
-		<a href="{% url 'logout' %}">Logout</a>
-	</body>
-</html>
+	<div class="row g-4">
+		<!-- Resources -->
+		<div class="col-md-4">
+			<div class="card shadow-lg border-0 h-100 text-center">
+				<div class="card-body">
+					<h5 class="card-title text-success">Resources</h5>
+					<p class="card-text text-muted">
+						Access all academic resources, notes, and materials uploaded by
+						faculty.
+					</p>
+					<a href="{% url 'resources' %}" class="btn btn-outline-success"
+						>View Resources</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Attendance -->
+		<div class="col-md-4">
+			<div class="card shadow-lg border-0 h-100 text-center">
+				<div class="card-body">
+					<h5 class="card-title text-info">Attendance</h5>
+					<p class="card-text text-muted">
+						Check your attendance records and mark your presence in events.
+					</p>
+					<a href="{% url 'attendance' %}" class="btn btn-outline-info"
+						>View Attendance</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Events -->
+		<div class="col-md-4">
+			<div class="card shadow-lg border-0 h-100 text-center">
+				<div class="card-body">
+					<h5 class="card-title text-warning">Events</h5>
+					<p class="card-text text-muted">
+						See upcoming college events, workshops, and fests.
+					</p>
+					<a href="{% url 'events' %}" class="btn btn-outline-warning"
+						>View Events</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Lost & Found -->
+		<div class="col-md-4">
+			<div class="card shadow-lg border-0 h-100 text-center">
+				<div class="card-body">
+					<h5 class="card-title text-danger">Lost & Found</h5>
+					<p class="card-text text-muted">
+						Report or find lost belongings in the campus.
+					</p>
+					<a href="{% url 'lost_found' %}" class="btn btn-outline-danger"
+						>View Items</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Compiler -->
+		<div class="col-md-4">
+			<div class="card shadow-lg border-0 h-100 text-center">
+				<div class="card-body">
+					<h5 class="card-title text-secondary">Online Compiler</h5>
+					<p class="card-text text-muted">
+						Run your C, C++, or Python programs directly online.
+					</p>
+					<a href="{% url 'compiler' %}" class="btn btn-outline-secondary"
+						>Open Compiler</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Booking -->
+		<div class="col-md-4">
+			<div class="card shadow-lg border-0 h-100 text-center">
+				<div class="card-body">
+					<h5 class="card-title text-primary">Hall Booking</h5>
+					<p class="card-text text-muted">
+						Book seminar halls or classrooms for your events.
+					</p>
+					<a href="{% url 'hall_list' %}" class="btn btn-outline-primary"
+						>Book Now</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mx-auto mt-10">
+	<h2 class="text-2xl font-bold text-blue-700 mb-4">📚 Study Resources</h2>
+
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input
+			type="text"
+			name="title"
+			placeholder="Resource Title"
+			class="p-2 border rounded-lg w-full mb-2"
+		/>
+		<input type="file" name="file" class="p-2 border rounded-lg w-full mb-2" />
+		<button
+			type="submit"
+			class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+		>
+			Upload
+		</button>
+	</form>
+
+	<h3 class="text-xl mt-6 mb-2">Uploaded Files:</h3>
+	<ul>
+		{% for res in resources %}
+		<li>
+			<a href="{{ res.file.url }}" class="text-blue-600">{{ res.title }}</a>
+		</li>
+		{% empty %}
+		<p>No resources uploaded yet.</p>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
